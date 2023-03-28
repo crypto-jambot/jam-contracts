@@ -30,8 +30,6 @@ async function deployJamBot() {
     console.log(`Owner 2: ${await jambot.owner2()}`);
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
 // deployArbitrage().catch((error) => {
 //     console.error(error);
 //     process.exitCode = 1;
