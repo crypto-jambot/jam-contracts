@@ -10,6 +10,17 @@ const config: HardhatUserConfig = {
                 version: "0.8.18",
             },
         ],
+        settings: {
+            viaIR: true,
+            optimizer: {
+                enabled: true,
+                details: {
+                    yulDetails: {
+                        optimizerSteps: "u",
+                    },
+                },
+            },
+        },
     },
     networks: {
         localhost: {
@@ -18,8 +29,9 @@ const config: HardhatUserConfig = {
         hardhat: {
             forking: {
                 url: `https://eth-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_KEY}`,
-                blockNumber: 16863267,
+                blockNumber: 17382500,
             },
+            allowUnlimitedContractSize: true,
         },
         mainnet: {
             url: "https://rabbit.dev/http",

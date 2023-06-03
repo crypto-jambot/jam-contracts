@@ -30,12 +30,32 @@ async function deployJamBot() {
     console.log(`Owner 2: ${await jambot.owner2()}`);
 }
 
+async function deployJamBotV3() {
+    const JamBotV3 = await ethers.getContractFactory("JamBotV3");
+    const jambotV3 = await JamBotV3.deploy(
+        process.env.JOSHUA_PUBLIC_WALLET_ADDRESS as string,
+        process.env.MAX_PUBLIC_WALLET_ADDRESS as string,
+        25
+    );
+    await jambotV3.deployed();
+
+    console.log(`Deployer: ${await jambotV3.deployer()}`);
+    console.log(`JamBot3 deployed to ${jambotV3.address}`);
+    console.log(`Owner 1: ${await jambotV3.owner1()}`);
+    console.log(`Owner 2: ${await jambotV3.owner2()}`);
+}
+
 // deployArbitrage().catch((error) => {
 //     console.error(error);
 //     process.exitCode = 1;
 // });
 
-deployJamBot().catch((error) => {
+// deployJamBot().catch((error) => {
+//     console.error(error);
+//     process.exitCode = 1;
+// });
+
+deployJamBotV3().catch((error) => {
     console.error(error);
     process.exitCode = 1;
 });
